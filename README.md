@@ -1,2 +1,2 @@
 # ecommercer
-A tool to make it easy for developers to create e-commerce websites easily w/out having to start from the bottom
+An e-commerce application to make it easy for developers to get started with selling products leveraging Shopify.
