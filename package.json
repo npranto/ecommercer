@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "echo 'Run unit tests'",
     "lint": "eslint . --ext .js,.jsx",
     "format": "prettier --write .",
     "prepare": "husky"
