@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/npranto/ecommercer/compare/v2.3.0...v2.4.0) (2025-03-19)
+
+
+### Features
+
+* [#9](https://github.com/npranto/ecommercer/issues/9) - adds tag deployment to prod ([6522b6d](https://github.com/npranto/ecommercer/commit/6522b6dc9c57ee87f9964d51f00c2a409f507059))
+
 # [2.3.0](https://github.com/npranto/ecommercer/compare/v2.2.0...v2.3.0) (2025-03-19)
 
 
