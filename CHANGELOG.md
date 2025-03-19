@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/npranto/ecommercer/compare/v2.7.1...v2.8.0) (2025-03-19)
+
+
+### Features
+
+* [#9](https://github.com/npranto/ecommercer/issues/9) - add preview deployment for pull requests ([ef01301](https://github.com/npranto/ecommercer/commit/ef01301197f0cb2eabcd14277da7aabdfabaf36d))
+
 ## [2.7.1](https://github.com/npranto/ecommercer/compare/v2.7.0...v2.7.1) (2025-03-19)
 
 
