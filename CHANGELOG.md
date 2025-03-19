@@ -1,3 +1,5 @@
+# [2.0.0](https://github.com/npranto/ecommercer/compare/v1.1.0...v2.0.0) (2025-03-19)
+
 # [1.1.0](https://github.com/npranto/ecommercer/compare/v1.0.2...v1.1.0) (2025-03-19)
 
 
