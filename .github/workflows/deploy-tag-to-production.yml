@@ -1,9 +1,12 @@
-name: Deploy to Production
+name: Deploy Tag to Production
 
 on:
-  push:
-    tags:
-      - v*
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to deploy (e.g., v1.0.0)'
+        required: true
+        type: string
 
 jobs:
   deploy:
@@ -11,11 +14,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.tag }} # Checkout the specific tag
 
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-      - name: Deploy Tagged Version
+      - name: Deploy to Production
         run: vercel --prod
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
