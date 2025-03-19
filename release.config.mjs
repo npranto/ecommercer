@@ -19,7 +19,6 @@ export default {
             release: 'patch',
           },
           {
-            type: '*',
             release: 'patch',
           },
         ],
