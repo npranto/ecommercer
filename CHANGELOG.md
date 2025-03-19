@@ -1,32 +1,34 @@
-# [2.3.0](https://github.com/npranto/ecommercer/compare/v2.2.0...v2.3.0) (2025-03-19)
-
+# [2.4.0](https://github.com/npranto/ecommercer/compare/v2.3.0...v2.4.0) (2025-03-19)
 
 ### Features
 
-* [#9](https://github.com/npranto/ecommercer/issues/9) - adds tag deployment to prod ([e2dd691](https://github.com/npranto/ecommercer/commit/e2dd691768a7a66eeade29b2514e03284ea30192))
+- [#9](https://github.com/npranto/ecommercer/issues/9) - adds tag deployment to prod ([6522b6d](https://github.com/npranto/ecommercer/commit/6522b6dc9c57ee87f9964d51f00c2a409f507059))
+
+# [2.3.0](https://github.com/npranto/ecommercer/compare/v2.2.0...v2.3.0) (2025-03-19)
+
+### Features
+
+- [#9](https://github.com/npranto/ecommercer/issues/9) - adds tag deployment to prod ([e2dd691](https://github.com/npranto/ecommercer/commit/e2dd691768a7a66eeade29b2514e03284ea30192))
 
 # [2.2.0](https://github.com/npranto/ecommercer/compare/v2.1.0...v2.2.0) (2025-03-19)
 
-
 ### Features
 
-* [#9](https://github.com/npranto/ecommercer/issues/9) - testing deploy to prod ([72f47bd](https://github.com/npranto/ecommercer/commit/72f47bd250729e86c061c78aeebcdc16f3a5f0e3))
+- [#9](https://github.com/npranto/ecommercer/issues/9) - testing deploy to prod ([72f47bd](https://github.com/npranto/ecommercer/commit/72f47bd250729e86c061c78aeebcdc16f3a5f0e3))
 
 # [2.1.0](https://github.com/npranto/ecommercer/compare/v2.0.0...v2.1.0) (2025-03-19)
 
-
 ### Features
 
-* [#9](https://github.com/npranto/ecommercer/issues/9) - sets up vercel deployment with GH action for prod ([640aca9](https://github.com/npranto/ecommercer/commit/640aca90c4a5994ca9ef84a79ff8082898bf9a41))
+- [#9](https://github.com/npranto/ecommercer/issues/9) - sets up vercel deployment with GH action for prod ([640aca9](https://github.com/npranto/ecommercer/commit/640aca90c4a5994ca9ef84a79ff8082898bf9a41))
 
 # [2.0.0](https://github.com/npranto/ecommercer/compare/v1.1.0...v2.0.0) (2025-03-19)
 
 # [1.1.0](https://github.com/npranto/ecommercer/compare/v1.0.2...v1.1.0) (2025-03-19)
 
-
 ### Features
 
-* test minor update ([65da4b8](https://github.com/npranto/ecommercer/commit/65da4b812623ee58a051de7f723be368214a1884))
+- test minor update ([65da4b8](https://github.com/npranto/ecommercer/commit/65da4b812623ee58a051de7f723be368214a1884))
 
 ## [1.0.2](https://github.com/npranto/ecommercer/compare/v1.0.1...v1.0.2) (2025-03-19)
 
