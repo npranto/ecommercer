@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/npranto/ecommercer/compare/v2.5.0...v2.6.0) (2025-03-19)
+
+
+### Features
+
+* [#9](https://github.com/npranto/ecommercer/issues/9) - updates bg color to red ([a70e747](https://github.com/npranto/ecommercer/commit/a70e7475dc071b7d339d5f805eb335b9869bcb4a))
+
 # [2.5.0](https://github.com/npranto/ecommercer/compare/v2.4.0...v2.5.0) (2025-03-19)
 
 ### Features
