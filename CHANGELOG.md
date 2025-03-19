@@ -1,3 +1,11 @@
+# [2.5.0](https://github.com/npranto/ecommercer/compare/v2.4.0...v2.5.0) (2025-03-19)
+
+
+### Features
+
+* [#6](https://github.com/npranto/ecommercer/issues/6) - fixes merge conflict ([5e715b3](https://github.com/npranto/ecommercer/commit/5e715b3dcda04b99d6ba678e8b2c7c4da95e3a8c))
+* [#9](https://github.com/npranto/ecommercer/issues/9) - testing prod content changes ([9bd0a10](https://github.com/npranto/ecommercer/commit/9bd0a109046d1b6733698c9df30e5778b9e406c9))
+
 # [2.4.0](https://github.com/npranto/ecommercer/compare/v2.3.0...v2.4.0) (2025-03-19)
 
 ### Features
