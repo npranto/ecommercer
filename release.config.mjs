@@ -31,7 +31,7 @@ export default {
       '@semantic-release/git',
       {
         assets: ['package.json', 'package-lock.json', 'CHANGELOG.md'],
-        message: '🚀 v${nextRelease.version} [skip ci]',
+        message: '🚀 v${nextRelease.version}',
       },
     ],
   ],
