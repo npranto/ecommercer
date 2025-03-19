@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   branches: ['master'],
   plugins: [
     [
@@ -7,11 +7,21 @@ module.exports = {
         preset: 'conventionalcommits',
         releaseRules: [
           {
-            type: 'minor',
+            type: 'feat!',
+            release: 'major',
+          },
+          {
+            type: 'feat',
             release: 'minor',
           },
-          { type: 'major', release: 'major' },
-          { release: 'patch' },
+          {
+            type: 'fix',
+            release: 'patch',
+          },
+          {
+            type: '*',
+            release: 'patch',
+          },
         ],
       },
     ],
