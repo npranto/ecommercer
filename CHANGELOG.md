@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/npranto/ecommercer/compare/v2.6.0...v2.7.0) (2025-03-19)
+
+
+### Features
+
+* [#9](https://github.com/npranto/ecommercer/issues/9) - turn off all auto deploy ([aafa7bd](https://github.com/npranto/ecommercer/commit/aafa7bd8f03ab6ccdadb0bb663d6111d99267a23))
+
 # [2.6.0](https://github.com/npranto/ecommercer/compare/v2.5.0...v2.6.0) (2025-03-19)
 
 
