@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/npranto/ecommercer/compare/v1.0.0...v1.0.1) (2025-03-19)
+
+
+### Bug Fixes
+
+* testing patch update ([7bfbfc1](https://github.com/npranto/ecommercer/commit/7bfbfc14673706a8a744b7780c3a2b12a55f434a))
+
 # 1.0.0 (2025-03-18)
 
 
