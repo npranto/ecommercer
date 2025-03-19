@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/npranto/ecommercer/compare/v2.0.0...v2.1.0) (2025-03-19)
+
+
+### Features
+
+* [#9](https://github.com/npranto/ecommercer/issues/9) - sets up vercel deployment with GH action for prod ([640aca9](https://github.com/npranto/ecommercer/commit/640aca90c4a5994ca9ef84a79ff8082898bf9a41))
+
 # [2.0.0](https://github.com/npranto/ecommercer/compare/v1.1.0...v2.0.0) (2025-03-19)
 
 # [1.1.0](https://github.com/npranto/ecommercer/compare/v1.0.2...v1.1.0) (2025-03-19)
