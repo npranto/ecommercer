@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/npranto/ecommercer/compare/v2.7.0...v2.7.1) (2025-03-19)
+
+
+### Bug Fixes
+
+* [#9](https://github.com/npranto/ecommercer/issues/9) - updates bg color to yellow ([27aac6b](https://github.com/npranto/ecommercer/commit/27aac6ba00c41eed05d2f3803f7bfbd951c183b8))
+
 # [2.7.0](https://github.com/npranto/ecommercer/compare/v2.6.0...v2.7.0) (2025-03-19)
 
 
