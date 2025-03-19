@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/npranto/ecommercer/compare/v2.1.0...v2.2.0) (2025-03-19)
+
+
+### Features
+
+* [#9](https://github.com/npranto/ecommercer/issues/9) - testing deploy to prod ([72f47bd](https://github.com/npranto/ecommercer/commit/72f47bd250729e86c061c78aeebcdc16f3a5f0e3))
+
 # [2.1.0](https://github.com/npranto/ecommercer/compare/v2.0.0...v2.1.0) (2025-03-19)
 
 
