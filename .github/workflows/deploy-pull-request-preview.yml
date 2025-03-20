@@ -34,7 +34,7 @@ jobs:
       - name: Run Lighthouse on Preview URL
         run: |
           npm install -g @lhci/cli
-          lhci collect --url=https://ecommercer-hdo25l3hq-nprantos-projects.vercel.app --url=https://ecommercer-hdo25l3hq-nprantos-projects.vercel.app/about --numberOfRuns=1 --upload.target=temporary-public-storage --output-path=./lighthouse-results.json --config-path=.lighthouserc.mjs
+          lhci collect --url=https://ecommercer-hdo25l3hq-nprantos-projects.vercel.app --url=https://ecommercer-hdo25l3hq-nprantos-projects.vercel.app/about --numberOfRuns=1 --upload.target=temporary-public-storage
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
