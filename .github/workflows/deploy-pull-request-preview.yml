@@ -1,4 +1,4 @@
-name: Deploy Pull Request Preview and Run Web Vitals
+name: Deploy Pull Request Preview + Run Web Vitals
 
 on:
   pull_request:
@@ -39,14 +39,6 @@ jobs:
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-      - name: Run Lighthouse on Preview URL
-        run: |
-          npm install -g @lhci/cli
-          lhci collect --url=${{ env.DEPLOYMENT_URL }} --url=${{ env.DEPLOYMENT_URL }}/about --numberOfRuns=1
-          lhci upload --target=temporary-public-storage
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-
       - name: Add Preview Link to PR
         uses: actions/github-script@v6
         with:
@@ -72,7 +64,7 @@ jobs:
             **Deployment Type**: \`Preview\`
             **Branch**: \`${branchName}\`
             >
-              
+
             **Next Steps:**
             - Review the changes on the preview URL.
             - Share the preview URL with your team for feedback.
