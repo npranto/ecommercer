@@ -48,7 +48,7 @@ jobs:
               repo: context.repo.repo,
               body: `
               
-            ### 🚀 Preview Deployment Ready!
+            ### 🚀 Preview Deployment READY! 🎉
               
             Your changes have been successfully deployed to a preview environment. Here are the details:
               
