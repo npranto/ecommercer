@@ -31,34 +31,10 @@ jobs:
           echo "Deployment URL: $DEPLOYMENT_URL"
           echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
 
-      - name: Run Lighthouse
+      - name: Run Lighthouse on Preview URL
         run: |
-          npm install -g lighthouse
-          lighthouse ${{ env.DEPLOYMENT_URL }} --output json --output-path lighthouse-report.json
-
-      - name: Check Lighthouse Report
-        run: |
-          # Parse the Lighthouse report
-          LCP=$(jq -r '.lcp' lighthouse-report.json)
-          CLS=$(jq -r '.cls' lighthouse-report.json)
-          INP=$(jq -r '.inp' lighthouse-report.json)
-
-          # Define thresholds
-          LCP_THRESHOLD=2500  # LCP should be less than 2500ms
-          CLS_THRESHOLD=0.1  # CLS should be less than 0.1
-          INP_THRESHOLD=200  # INP should be less than 200ms
-
-          # Check if metrics are within thresholds
-          if [[ "$LCP" -gt "$LCP_THRESHOLD" ]] || [[ "$CLS" -gt "$CLS_THRESHOLD" ]] || [[ "$INP" -gt "$INP_THRESHOLD" ]]; then
-            echo "Core Web Vitals failed!"
-            echo "LCP: $LCP ms"
-            echo "CLS: $CLS"
-            echo "INP: $INP ms"
-            exit 1
-          else
-            echo "Core Web Vitals passed!"
-            exit 0
-          fi
+          npm install -g @lhci/cli
+          lhci autorun --upload.target=temporary-public-storage --collect.url=${{ env.DEPLOYMENT_URL }}
 
       - name: Add Preview Link to PR
         uses: actions/github-script@v6
