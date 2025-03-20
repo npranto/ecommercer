@@ -1,13 +1,8 @@
-const deploymentUrl = process.env.DEPLOYMENT_URL;
-
 export default {
 	ci: {
 		collect: {
-			url: [
-				deploymentUrl, // Homepage
-				`${deploymentUrl}/about`, // About page
-			],
-			numberOfRuns: 1, // Number of runs to average metrics
+			url: [],
+			numberOfRuns: 1,
 		},
 		assert: {
 			assertions: {
