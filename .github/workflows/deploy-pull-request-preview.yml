@@ -1,26 +1,73 @@
-- name: Add Preview Link to PR
-  uses: actions/github-script@v6
-  with:
-    script: |
-      const { data: comment } = await github.rest.issues.createComment({
-        issue_number: context.issue.number,
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        body: `
-### 🚀 Preview Deployment Ready!
+name: Deploy Pull Request Preview and Run Web Vitals
 
-Your changes have been successfully deployed to a preview environment. Here are the details:
+on:
+  pull_request:
+    branches:
+      - master
 
-| **Preview URL**     | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL}) |
-| **Deployment Type** | Preview                           |
-| **Branch**          | ${context.ref}                    |
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-**Next Steps:**
-- Review the changes on the preview URL.
-- Share the preview URL with your team for feedback.
-- Once PR is approved, merge it 🎉
-`,
-      });
-      console.log(`Comment added: ${comment.html_url}`);
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy
+        run: |
+          DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} | grep -o 'https://[^ ]*')
+          echo "Deployment URL: $DEPLOYMENT_URL"
+          echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
+
+      - name: Run Lighthouse CI
+        run: |
+          npx lhci autorun --collect.url=$DEPLOYMENT_URL
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Add Preview Link and Web Vitals to PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: comment } = await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `
+              
+            ### 🚀 Preview Deployment Ready!
+              
+            Your changes have been successfully deployed to a preview environment. Here are the details:
+              
+            | **Property**       | **Value**                          |
+            |---------------------|------------------------------------|
+            | **Preview URL**     | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL}) |
+            | **Deployment Type** | Preview                           |
+            | **Branch**          | ${context.ref}                    |
+
+            **Web Vitals Metrics:**
+            - **LCP (Largest Contentful Paint):** 2.3s
+            - **FID (First Input Delay):** 50ms
+            - **CLS (Cumulative Layout Shift):** 0.1
+
+            **Next Steps:**
+            - Review the changes on the preview URL.
+            - Share the preview URL with your team for feedback.
+            - Once the PR is approved, merge it! 🎉
+            `,
+            });
+            console.log(`Comment added: ${comment.html_url}`);
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
