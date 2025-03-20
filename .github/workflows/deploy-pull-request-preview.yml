@@ -52,9 +52,9 @@ jobs:
               
             Your changes have been successfully deployed to a preview environment. Here are the details:
               
-            | **Preview URL**     | [https://your-project.vercel.app](https://your-project.vercel.app) |
-            | **Deployment Type** | Preview                           |
-            | **Branch**          | ${branchName}                     |
+            **Preview URL**       | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL})
+            **Deployment Type**   | Preview                           
+            **Branch**            | ${branchName}                     
 
             **Next Steps:**
             - Review the changes on the preview URL.
