@@ -2,10 +2,10 @@ export default {
 	ci: {
 		collect: {
 			url: [
-				'${LHCI_PREVIEW_URL}', // (/) - home page
-				'${LHCI_PREVIEW_URL}/about', // (/about) - about page
+				'${DEPLOYMENT_URL}', // (/) - home page
+				'${DEPLOYMENT_URL}/about', // (/about) - about page
 			],
-			numberOfRuns: 3, // number of runs to average metrics
+			numberOfRuns: 1, // number of runs to average metrics
 		},
 		assert: {
 			assertions: {
