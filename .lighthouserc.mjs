@@ -2,7 +2,6 @@ export default {
 	ci: {
 		collect: {
 			url: [],
-			numberOfRuns: 1,
 		},
 		assert: {
 			assertions: {
