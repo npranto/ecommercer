@@ -1,5 +1,12 @@
 export default {
 	ci: {
+		collect: {
+			url: [
+				'${LHCI_PREVIEW_URL}', // (/) - home page
+				'${LHCI_PREVIEW_URL}/about', // (/about) - about page
+			],
+			numberOfRuns: 3, // number of runs to average metrics
+		},
 		assert: {
 			assertions: {
 				// Performance should be above 90%
@@ -17,6 +24,9 @@ export default {
 				// TBT should be <= 300ms
 				'audits:total-blocking-time': ['warn', { maxNumericValue: 300 }],
 			},
+		},
+		upload: {
+			target: 'temporary-public-storage',
 		},
 	},
 };
