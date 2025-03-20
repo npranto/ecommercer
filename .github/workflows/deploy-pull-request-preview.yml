@@ -33,7 +33,8 @@ jobs:
 
       - name: Run Lighthouse CI
         run: |
-          npx lhci autorun --collect.url=$DEPLOYMENT_URL
+          npm install -g @lhci/cli@0.14.x
+          lhci autorun --collect.url=$DEPLOYMENT_URL
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
@@ -54,26 +55,19 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
-                ### 🚀 Preview Deployment Ready!
+            ### 🚀 Preview Deployment READY! 🎉
 
-                Your changes have been successfully deployed to a preview environment. Here are the details:
+            Your changes have been successfully deployed to a preview environment. Here are the details:
 
-                | **Property**       | **Value**                          |
-                |---------------------|------------------------------------|
-                | **Preview URL**     | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL}) |
-                | **Deployment Type** | Preview                           |
-                | **Branch**          | ${branchName}                     |
+            | **Preview URL**     | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL}) |
+            | **Deployment Type** | Preview                           |
+            | **Branch**          | ${branchName}                     |
 
-                **Web Vitals Metrics:**
-                - **LCP (Largest Contentful Paint):** 2.3s
-                - **FID (First Input Delay):** 50ms
-                - **CLS (Cumulative Layout Shift):** 0.1
-
-                **Next Steps:**
-                - Review the changes on the preview URL.
-                - Share the preview URL with your team for feedback.
-                - Once the PR is approved, merge it! 🎉
-              `,
+            **Next Steps:**
+            - Review the changes on the preview URL.
+            - Share the preview URL with your team for feedback.
+            - Once the PR is approved, merge it!
+            `,
             });
             console.log(`Comment added: ${comment.html_url}`);
         env:
