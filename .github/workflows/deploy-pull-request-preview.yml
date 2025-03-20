@@ -41,32 +41,39 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            const branchName = pr.head.ref;
+
             const { data: comment } = await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
-              
-            ### 🚀 Preview Deployment Ready!
-              
-            Your changes have been successfully deployed to a preview environment. Here are the details:
-              
-            | **Property**       | **Value**                          |
-            |---------------------|------------------------------------|
-            | **Preview URL**     | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL}) |
-            | **Deployment Type** | Preview                           |
-            | **Branch**          | ${context.ref}                    |
+                ### 🚀 Preview Deployment Ready!
 
-            **Web Vitals Metrics:**
-            - **LCP (Largest Contentful Paint):** 2.3s
-            - **FID (First Input Delay):** 50ms
-            - **CLS (Cumulative Layout Shift):** 0.1
+                Your changes have been successfully deployed to a preview environment. Here are the details:
 
-            **Next Steps:**
-            - Review the changes on the preview URL.
-            - Share the preview URL with your team for feedback.
-            - Once the PR is approved, merge it! 🎉
-            `,
+                | **Property**       | **Value**                          |
+                |---------------------|------------------------------------|
+                | **Preview URL**     | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL}) |
+                | **Deployment Type** | Preview                           |
+                | **Branch**          | ${branchName}                     |
+
+                **Web Vitals Metrics:**
+                - **LCP (Largest Contentful Paint):** 2.3s
+                - **FID (First Input Delay):** 50ms
+                - **CLS (Cumulative Layout Shift):** 0.1
+
+                **Next Steps:**
+                - Review the changes on the preview URL.
+                - Share the preview URL with your team for feedback.
+                - Once the PR is approved, merge it! 🎉
+              `,
             });
             console.log(`Comment added: ${comment.html_url}`);
         env:
