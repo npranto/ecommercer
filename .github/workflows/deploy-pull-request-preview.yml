@@ -34,7 +34,7 @@ jobs:
       - name: Run Lighthouse on Deployed URL
         run: |
           npm install -g lighthouse
-          lighthouse ${{ process.env.DEPLOYMENT_URL }} --quiet --output=json --chrome-flags="--headless" > report.json
+          lighthouse ${{ env.DEPLOYMENT_URL }} --quiet --output=json --chrome-flags="--headless" > report.json
           cat report.json | jq '.categories.performance, .audits["first-contentful-paint"].numericValue, .audits["largest-contentful-paint"].numericValue, .audits["cumulative-layout-shift"].numericValue, .audits["total-blocking-time"].numericValue, .audits["speed-index"].numericValue'
 
       - name: Add Preview Link to PR
