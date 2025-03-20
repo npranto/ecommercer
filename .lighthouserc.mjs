@@ -19,6 +19,8 @@ export default {
 				'audits:interactive': ['warn', { maxNumericValue: 5000 }],
 				// TBT should be <= 300ms
 				'audits:total-blocking-time': ['warn', { maxNumericValue: 300 }],
+				// SEO should be above 90%
+				'categories:seo': ['error', { minScore: 0.9 }],
 			},
 		},
 		upload: {
