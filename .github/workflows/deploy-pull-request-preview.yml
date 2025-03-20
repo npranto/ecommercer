@@ -31,6 +31,12 @@ jobs:
           echo "Deployment URL: $DEPLOYMENT_URL"
           echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
 
+      - name: Run Lighthouse on Deployed URL
+        run: |
+          npm install -g lighthouse
+          lighthouse ${{ process.env.DEPLOYMENT_URL }} --quiet --output=json --chrome-flags="--headless" > report.json
+          cat report.json | jq '.categories.performance, .audits["first-contentful-paint"].numericValue, .audits["largest-contentful-paint"].numericValue, .audits["cumulative-layout-shift"].numericValue, .audits["total-blocking-time"].numericValue, .audits["speed-index"].numericValue'
+
       - name: Add Preview Link to PR
         uses: actions/github-script@v6
         with:
@@ -52,9 +58,9 @@ jobs:
               
             Your changes have been successfully deployed to a preview environment. Here are the details:
               
-            **Preview URL**       : [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL})
-            **Deployment Type**   : \`Preview\`
-            **Branch**            : \`${branchName}\`
+            **Preview URL**: [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL})
+            **Deployment Type**: \`Preview\`
+            **Branch**: \`${branchName}\`
 
             **Next Steps:**
             - Review the changes on the preview URL.
