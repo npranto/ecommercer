@@ -31,31 +31,7 @@ jobs:
           echo "Deployment URL: $DEPLOYMENT_URL"
           echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
 
-        - name: Run Lighthouse CI
-          id: lhci
-          run: |
-            # Run Lighthouse CI and output results to a JSON file
-            npx lhci autorun --collect.url=$DEPLOYMENT_URL --json > lhci-results.json
-
-            # Extract the scores from the JSON file
-            SCORES=$(node -e "
-              const results = require('./lhci-results.json');
-              const scores = results[0].summary;
-              console.log(
-                `Performance: ${scores.performance}, ` +
-                `Accessibility: ${scores.accessibility}, ` +
-                `Best Practices: ${scores['best-practices']}, ` +
-                `SEO: ${scores.seo}, ` +
-                `PWA: ${scores.pwa}`
-              );
-            ")
-
-            # Output the scores for use in the next step
-            echo "SCORES=$SCORES" >> $GITHUB_ENV
-          env:
-            LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-
-      - name: Add Preview Link and Web Vitals to PR
+      - name: Add Preview Link to PR
         uses: actions/github-script@v6
         with:
           script: |
@@ -64,7 +40,6 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.issue.number,
             });
-
             const branchName = pr.head.ref;
 
             const { data: comment } = await github.rest.issues.createComment({
@@ -72,25 +47,19 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
-            ### 🚀 Preview Deployment READY! 🎉
-
+              
+            ### 🚀 Preview Deployment Ready!
+              
             Your changes have been successfully deployed to a preview environment. Here are the details:
-
+              
             | **Preview URL**     | [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL}) |
             | **Deployment Type** | Preview                           |
             | **Branch**          | ${branchName}                     |
 
-            **Lighthouse Scores:**
-            - **Performance:** ${process.env.SCORES.split(', ')[0]}
-            - **Accessibility:** ${process.env.SCORES.split(', ')[1]}
-            - **Best Practices:** ${process.env.SCORES.split(', ')[2]}
-            - **SEO:** ${process.env.SCORES.split(', ')[3]}
-            - **PWA:** ${process.env.SCORES.split(', ')[4]}
-
             **Next Steps:**
             - Review the changes on the preview URL.
             - Share the preview URL with your team for feedback.
-            - Once the PR is approved, merge it!
+            - Once the PR is approved, merge it! 🎉
             `,
             });
             console.log(`Comment added: ${comment.html_url}`);
