@@ -13,62 +13,71 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
 
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
+      # - name: Install Vercel CLI
+      #   run: npm install --global vercel@latest
 
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      # - name: Pull Vercel Environment Information
+      #   run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      # - name: Build Project Artifacts
+      #   run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy Project Artifacts to Vercel
-        id: deploy
-        run: |
-          DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} | grep -o 'https://[^ ]*')
-          echo "Deployment URL: $DEPLOYMENT_URL"
-          echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
+      # - name: Deploy Project Artifacts to Vercel
+      #   id: deploy
+      #   run: |
+      #     DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} | grep -o 'https://[^ ]*')
+      #     echo "Deployment URL: $DEPLOYMENT_URL"
+      #     echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
 
       - name: Run Lighthouse on Preview URL
         run: |
           npm install -g @lhci/cli
-          lhci collect --url=${{ env.DEPLOYMENT_URL }} --url=${{ env.DEPLOYMENT_URL }}/about --numberOfRuns=1
+          lhci collect --url=https://ecommercer-hdo25l3hq-nprantos-projects.vercel.app --url=https://ecommercer-hdo25l3hq-nprantos-projects.vercel.app/about --numberOfRuns=1
+          lhci upload --target=temporary-public-storage
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-      - name: Add Preview Link to PR
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { data: pr } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-            });
-            const branchName = pr.head.ref;
+      # - name: Run Lighthouse on Preview URL
+      #   run: |
+      #     npm install -g @lhci/cli
+      #     lhci collect --url=${{ env.DEPLOYMENT_URL }} --url=${{ env.DEPLOYMENT_URL }}/about --numberOfRuns=1
+      #     lhci upload --target=temporary-public-storage
+      #   env:
+      #     LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-            const { data: comment } = await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `
-              
-            ### 🚀 Preview Deployment READY! 🎉
-              
-            Your changes have been successfully deployed to a preview environment. Here are the details:
-              
-            **Preview URL**: [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL})
-            **Deployment Type**: \`Preview\`
-            **Branch**: \`${branchName}\`
+      # - name: Add Preview Link to PR
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       const { data: pr } = await github.rest.pulls.get({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         pull_number: context.issue.number,
+      #       });
+      #       const branchName = pr.head.ref;
 
-            **Next Steps:**
-            - Review the changes on the preview URL.
-            - Share the preview URL with your team for feedback.
-            - Once the PR is approved, merge it! 🎉
-            `,
-            });
-            console.log(`Comment added: ${comment.html_url}`);
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #       const { data: comment } = await github.rest.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: `
+
+      #       ### 🚀 Preview Deployment READY! 🎉
+
+      #       Your changes have been successfully deployed to a preview environment. Here are the details:
+
+      #       **Preview URL**: [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL})
+      #       **Deployment Type**: \`Preview\`
+      #       **Branch**: \`${branchName}\`
+
+      #       **Next Steps:**
+      #       - Review the changes on the preview URL.
+      #       - Share the preview URL with your team for feedback.
+      #       - Once the PR is approved, merge it! 🎉
+      #       `,
+      #       });
+      #       console.log(`Comment added: ${comment.html_url}`);
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
