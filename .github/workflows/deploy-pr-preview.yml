@@ -52,7 +52,7 @@ jobs:
 
             Your changes have been successfully deployed to a preview environment. Here are the details:
 
-            > **Preview URL**: [${process.env.DEPLOYMENT_URL}](${process.env.DEPLOYMENT_URL})
+            > **Preview URL**: <a href="${process.env.DEPLOYMENT_URL}" target="_blank">${process.env.DEPLOYMENT_URL}</a>
             **Deployment Type**: \`Preview\`
             **Branch**: \`${branchName}\`
             >
