@@ -60,15 +60,17 @@ The Storefront API is a GraphQL API that allows you to query and mutate data in 
 
 ### Using `lib/shopify/client.js` for Client-side API calls
 
-To use the Storefront API on the client rnedered pages or compoennts, use the `lib/shopify/client.js` file to import functionalities as follows:
+To use the Storefront API on the client rendered pages or components, use the `lib/shopify/client.js` file to import functionalities as follows:
 
-- `ShopifyClientProvider`: A React Context Provider that provides the Storefront API client to the app. Usually added to the page level root `app/[PAGE]/layout.js` component.
-- `useProductsQuery`: A React hook that fetches product data from the Storefront API. By default, it fetches first 10 products from the Storefront API, but you can modify the query to fetch specific number of products.
+`ShopifyClientProvider`: A React Context Provider that provides the Storefront API client to the app. Usually added to the page level root `app/[PAGE]/layout.js` component.
+
+`useProductsQuery`: A React hook that fetches product data from the Storefront API. By default, it fetches first 10 products from the Storefront API, but you can modify the query to fetch specific number of products.
 
 Example:
 
 ```js
 // app/about/layout.js
+
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
@@ -82,6 +84,7 @@ export default function RootLayout({ children }) {
 
 ```js
 // app/about/page.js
+
 'use client';
 
 import { useProductsQuery } from '@/lib/shopify/client';
@@ -117,19 +120,19 @@ export default function About() {
 
 To use the Storefront API on the server-rendered pages or components, use the `lib/shopify/server.js` file to import functionalities as follows:
 
-- `getProducts`: A function that fetches product data from the Storefront API. By default, it fetches first 10 products from the Storefront API, but you can modify the query to fetch specific number of products.
+`getProducts`: A function that fetches product data from the Storefront API. By default, it fetches first 10 products from the Storefront API, but you can modify the query to fetch specific number of products.
 
 Example:
 
 ```js
+// app/page.js
+
 import { getProducts } from '@/lib/shopify/server';
 
 export default async function Home() {
 	const { products, error, isLoading } = await getProducts({
 		first: 10, // number of products to fetch (default: 10)
 	});
-
-	console.log('products', products);
 
 	if (isLoading) return <p>Loading...</p>;
 

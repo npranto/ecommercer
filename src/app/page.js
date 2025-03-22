@@ -3,8 +3,6 @@ import { getProducts } from '@/lib/shopify/server';
 export default async function Home() {
 	const { products, error, isLoading } = await getProducts({ first: 10 });
 
-	console.log('products', products);
-
 	if (isLoading) {
 		return <p>Loading...</p>;
 	}
