@@ -70,7 +70,7 @@ jobs:
       - name: Run Lighthouse on Preview URL
         run: |
           npm install -g @lhci/cli
-          lhci collect --url=${{ env.DEPLOYMENT_URL }} --numberOfRuns=1
+          lhci collect --url=${{ env.DEPLOYMENT_URL }} --url=${{ env.DEPLOYMENT_URL }}/about --numberOfRuns=1
           lhci upload --target=temporary-public-storage
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
