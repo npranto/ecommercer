@@ -1,13 +1,12 @@
 # [2.10.0](https://github.com/npranto/ecommercer/compare/v2.9.1...v2.10.0) (2025-03-22)
 
-
 ### Features
 
-* [#12](https://github.com/npranto/ecommercer/issues/12) - Configure Shopify Storefront API ([4f95d18](https://github.com/npranto/ecommercer/commit/4f95d189cef32c431c71a4f2f00e31930dd33e1b))
-* [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([c1ee1c0](https://github.com/npranto/ecommercer/commit/c1ee1c0e150dbe916d2a89165a8cbab0ede110b0))
-* [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([e875138](https://github.com/npranto/ecommercer/commit/e875138a57e1bc40d4f62c8aaaf4f1c7d8573e19))
-* [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([105abb5](https://github.com/npranto/ecommercer/commit/105abb5ec98d241ee95591db26e1e0964e60518a))
-* [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([24f5ec7](https://github.com/npranto/ecommercer/commit/24f5ec727fed1169f24bb419b14a8d9c25e251d1))
+- [#12](https://github.com/npranto/ecommercer/issues/12) - Configure Shopify Storefront API ([4f95d18](https://github.com/npranto/ecommercer/commit/4f95d189cef32c431c71a4f2f00e31930dd33e1b))
+- [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([c1ee1c0](https://github.com/npranto/ecommercer/commit/c1ee1c0e150dbe916d2a89165a8cbab0ede110b0))
+- [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([e875138](https://github.com/npranto/ecommercer/commit/e875138a57e1bc40d4f62c8aaaf4f1c7d8573e19))
+- [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([105abb5](https://github.com/npranto/ecommercer/commit/105abb5ec98d241ee95591db26e1e0964e60518a))
+- [#12](https://github.com/npranto/ecommercer/issues/12) - fixes unit tests ([24f5ec7](https://github.com/npranto/ecommercer/commit/24f5ec727fed1169f24bb419b14a8d9c25e251d1))
 
 ## [2.9.1](https://github.com/npranto/ecommercer/compare/v2.9.0...v2.9.1) (2025-03-20)
 
