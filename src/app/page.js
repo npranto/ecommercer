@@ -19,7 +19,7 @@ export default async function Home() {
 	}
 
 	return (
-		<div className="flex flex-col min-h-screen max-w-screen-lg mx-auto bg-yellow-100">
+		<div className="flex flex-col min-h-screen max-w-screen-lg mx-auto bg-green-100">
 			<header className="header">Header</header>
 			<main className="flex flex-col">
 				<h1>Hello ecommercer!</h1>
