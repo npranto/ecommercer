@@ -16,9 +16,11 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
+		"graphql": "^15.0.0",
 		"next": "15.2.3",
 		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react-dom": "^19.0.0",
+		"urql": "^1.9.7"
 	},
 	"devDependencies": {
 		"@semantic-release/changelog": "^6.0.3",
