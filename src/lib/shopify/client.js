@@ -29,11 +29,11 @@ export function ShopifyClientProvider({ children }) {
 	return <Provider value={shopifyClient}>{children}</Provider>;
 }
 
-export const useProductsQuery = () => {
+export const useProductsQuery = ({ first = 10 }) => {
 	const [{ data, fetching, error }] = useQuery({
 		query: GET_PRODUCTS,
 		variables: {
-			first: 10, // number of products to fetch
+			first, // number of products to fetch
 		},
 		requestPolicy: 'cache-and-network', // caches data and only re-fetches when stale
 		staleTime: 1000 * 60 * 5, // stale time in milliseconds (default: 5 minute)
