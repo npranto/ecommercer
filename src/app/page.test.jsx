@@ -1,13 +1,19 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Page from './page';
+import Page from '@/app/page';
+import { getProducts } from '@/lib/shopify/server';
 
-describe('Page', () => {
-	it('renders a heading', () => {
-		render(<Page />);
+jest.mock('@/lib/shopify/server');
 
-		const heading = screen.getByRole('heading', { level: 1 });
+describe('Home Page', () => {
+	it('renders loading state', async () => {
+		getProducts.mockResolvedValueOnce({
+			products: [],
+			isLoading: true,
+			error: null,
+		});
 
-		expect(heading).toBeInTheDocument();
+		const { container } = render(await Page());
+		expect(container).toMatchSnapshot();
 	});
 });
