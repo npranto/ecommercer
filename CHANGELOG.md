@@ -1,3 +1,12 @@
+## [2.10.1](https://github.com/npranto/ecommercer/compare/v2.10.0...v2.10.1) (2025-03-23)
+
+
+### Bug Fixes
+
+* [#12](https://github.com/npranto/ecommercer/issues/12) - adds back about page to gh action for core web vitals ([f09b4c7](https://github.com/npranto/ecommercer/commit/f09b4c7b9803fa6f67e9d9636d22f28399cb0b52))
+* [#12](https://github.com/npranto/ecommercer/issues/12) - updates deployment url to open in a new tab ([db5c782](https://github.com/npranto/ecommercer/commit/db5c782710093d54f17c9889cf00f8a3f17a948b))
+* [#12](https://github.com/npranto/ecommercer/issues/12) - updates script to run lighthouse as last step ([bfc6b82](https://github.com/npranto/ecommercer/commit/bfc6b82b1150b2ec0a130baa9f01eda4d1305bf0))
+
 # [2.10.0](https://github.com/npranto/ecommercer/compare/v2.9.1...v2.10.0) (2025-03-22)
 
 ### Features
