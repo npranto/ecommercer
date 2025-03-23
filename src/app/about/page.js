@@ -3,7 +3,7 @@
 import { useProductsQuery } from '@/lib/shopify/client';
 
 export default function About() {
-	const { products, isLoading, error } = useProductsQuery();
+	const { products, isLoading, error } = useProductsQuery({ first: 10 });
 
 	if (isLoading) return <div>Loading...</div>;
 
